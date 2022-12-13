@@ -1,9 +1,16 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MusicPlayer {
-    private Music music;
+    private List<Music> musicList = new ArrayList<>();
     private String name;
     private int volume;
+
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
 
     public String getName() {
         return name;
@@ -21,14 +28,15 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    //  public MusicPlayer(Music music) { // <constructor-arg ref="musicBean"/> внедрение через конструктор в аppContext тег
+    //  public MusicPlayer(Music music) {  <constructor-arg ref="musicBean"/> внедрение через конструктор в аppContext тег
     //    this.music = music;
     //}
-    public void setMusic(Music music) { //внедрение через сеттер
-        this.music = music;             // важно название в теге и название сеттера music
-    }
+    //public void setMusic(Music music) { внедрение через сеттер
+    //   this.music = music;              важно название в теге и название сеттера music
+    //}
 
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+        for (Music music : this.musicList)
+            System.out.println("Playing: " + music.getSong());
     }
 }
